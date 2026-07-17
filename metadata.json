@@ -1,0 +1,6 @@
+{
+  "name": "Self Consistency Answer Engine",
+  "description": "An AI orchestration engine that queries multiple LLMs independently, evaluates and normalizes responses, and synthesizes a high-quality self-consistent answer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
