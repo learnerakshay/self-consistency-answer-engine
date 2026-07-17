@@ -1,5 +1,4 @@
 # Self Consistency Answer Engine - Project Architecture Notes
-
 # Overall Architecture
 
 ```
@@ -604,11 +603,105 @@ User
 
 ---
 
-# Future Expansion
+# Future Improvements
+
+> Potential enhancements for the next version of the Self Consistency Answer Engine.
+
+---
+
+## 1. Handle Long Request Timeouts
+
+### Current Limitation
+Large prompts may take more than 30 seconds because multiple AI models are called before returning the final response.
+
+### Possible Solution
+- Increase the frontend request timeout (e.g., 60–90 seconds).
+- Implement response streaming for better user experience.
+
+---
+
+## 2. Add User Authentication
+
+### Current Limitation
+Anyone with the application URL can access the service.
+
+### Possible Solution
+- Implement JWT Authentication.
+- Add Google OAuth or GitHub OAuth.
+- Restrict API access to authenticated users.
+
+---
+
+## 3. Store Chat History
+
+### Current Limitation
+All conversations disappear after refreshing the page.
+
+### Possible Solution
+- Integrate PostgreSQL or MongoDB.
+- Store prompts, responses, timestamps, and user information.
+- Allow users to revisit previous conversations.
+
+---
+
+## 4. Introduce Response Caching
+
+### Current Limitation
+Repeated prompts trigger new API requests, increasing cost and response time.
+
+### Possible Solution
+- Use Redis to cache frequently requested prompts.
+- Return cached responses when appropriate.
+- Reduce API costs and improve performance.
+
+---
+
+## 5. Add Retrieval-Augmented Generation (RAG)
+
+### Current Limitation
+The application relies only on general-purpose LLM knowledge.
+
+### Possible Solution
+- Integrate a Vector Database (e.g., Pinecone or ChromaDB).
+- Retrieve relevant documents before generating responses.
+- Improve accuracy for domain-specific queries.
+
+---
+
+## 6. Support Streaming Responses
+
+### Current Limitation
+Users must wait until the complete response is generated.
+
+### Possible Solution
+- Use Server-Sent Events (SSE) or WebSockets.
+- Stream model responses token by token.
+- Display real-time generation progress.
+
+---
+
+## 7. Improve Scalability
+
+### Current Limitation
+The application is designed for small-scale usage.
+
+### Possible Solution
+- Add rate limiting.
+- Introduce request queues.
+- Deploy behind a load balancer.
+- Add centralized logging and monitoring for production environments.
+
+---
+
+# Version 2 Roadmap
+
 - Authentication
 - Chat History
+- PostgreSQL / MongoDB
+- Redis Caching
+- RAG Integration
+- Vector Database
 - Streaming Responses
-- File Upload
-- LangGraph / LangChain Integration
-
-Current architecture already supports these additions without major restructuring.
+- Multi-Model Support (Claude, Grok, Llama)
+- Conversation Memory
+- Production Monitoring
