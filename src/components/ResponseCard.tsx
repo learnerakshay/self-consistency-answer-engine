@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactMarkdown from "react-markdown";
 import { Copy, Check, ShieldCheck, Zap, Sparkles } from 'lucide-react';
 
 interface ResponseCardProps {
@@ -79,8 +80,10 @@ export default function ResponseCard({
           </div>
         </div>
 
-        <div className="whitespace-pre-wrap font-sans text-[15px] text-slate-800 leading-relaxed">
-          {response || 'No response returned.'}
+            <div className="prose prose-slate max-w-none text-slate-800">
+      <ReactMarkdown>
+        {response || "No response returned."}
+      </ReactMarkdown>
         </div>
       </div>
     );
@@ -106,9 +109,11 @@ export default function ResponseCard({
         )}
       </div>
 
-      <div className="whitespace-pre-wrap font-sans text-[13px] text-slate-600 leading-relaxed flex-1">
-        {response || 'No response returned.'}
-      </div>
+              <div className="prose prose-sm prose-slate max-w-none flex-1">
+          <ReactMarkdown>
+            {response || "No response returned."}
+          </ReactMarkdown>
+        </div>
     </div>
   );
 }
